@@ -1,0 +1,280 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "remove MainFrame object",
+            "type": "shell",
+            "command":"del",
+            "args": [
+                "/f",
+                "build\\MainFrame.obj",
+            ]
+        },
+        {
+            "label": "remove BoilerController object",
+            "type": "shell",
+            "command":"del",
+            "args": [
+                "/f",
+                "build\\BoilerController.obj",
+            ]
+        },
+        {
+            "label": "remove DebugWindow object",
+            "type": "shell",
+            "command":"del",
+            "args": [
+                "/f",
+                "build\\DebugWindow.obj",
+            ]
+        },
+        {
+            "label": "remove executable",
+            "type": "shell",
+            "command":"del",
+            "args": [
+                "/f",
+                "build\\BoilerController.exe",
+            ]
+        },
+        {
+            "label": "build MainFrame",
+            "type": "shell",
+            "command":"scripts\\build.bat",
+            "args": [
+                "/c",
+                "/NOLOGO",
+                "/TP",
+                "/Fobuild\\MainFrame.obj",
+                "/MD",
+                "/DWIN32",
+                "/Zi",
+                "/Fdbuild\\MainFrame.pdb",
+                "/O2",
+                "/D_CRT_SECURE_NO_DEPRECATE=1",
+                "/D_CRT_NON_CONFORMING_SWPRINTFS=1",
+                "/D_SCL_SECURE_NO_WARNINGS=1",
+                "/D__NO_VC_CRTDBG__",
+                "/D__WXMSW__",
+                "/DNDEBUG",
+                "/D_UNICODE",
+                "/IC:\\wxWidgets-3.0.4\\lib\\vc_dll\\mswu",
+                "/IC:\\wxWidgets-3.0.4\\include",
+                "/W4",
+                "/I.",
+                "/DWXUSINGDLL",
+                "/D_WINDOWS",
+                "/IC:\\wxWidgets-3.0.4\\samples",
+                "/DNOPCH",
+                "/GR",
+                "/EHsc",
+                ".\\src\\MainFrame.cpp"
+            ],
+            "group": "build",
+            "dependsOn":[
+                "remove MainFrame object"
+            ],
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build DebugWindow",
+            "type": "shell",
+            "command":"scripts\\build.bat",
+            "args": [
+                "/c",
+                "/NOLOGO",
+                "/TP",
+                "/Fobuild\\DebugWindow.obj",
+                "/MD",
+                "/DWIN32",
+                "/Zi",
+                "/Fdbuild\\DebugWindow.pdb",
+                "/O2",
+                "/D_CRT_SECURE_NO_DEPRECATE=1",
+                "/D_CRT_NON_CONFORMING_SWPRINTFS=1",
+                "/D_SCL_SECURE_NO_WARNINGS=1",
+                "/D__NO_VC_CRTDBG__",
+                "/D__WXMSW__",
+                "/DNDEBUG",
+                "/D_UNICODE",
+                "/IC:\\wxWidgets-3.0.4\\lib\\vc_dll\\mswu",
+                "/IC:\\wxWidgets-3.0.4\\include",
+                "/W4",
+                "/I.",
+                "/DWXUSINGDLL",
+                "/D_WINDOWS",
+                "/IC:\\wxWidgets-3.0.4\\samples",
+                "/DNOPCH",
+                "/GR",
+                "/EHsc",
+                ".\\src\\DebugWindow.cpp"
+            ],
+            "group": "build",
+            "dependsOn":[
+                "remove DebugWindow object"
+            ],
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build BoilerController",
+            "type": "shell",
+            "command": "scripts\\build.bat",
+            "args": [
+                "/c",
+                "/NOLOGO",
+                "/TP",
+                "/Fobuild\\BoilerController.obj",
+                "/MD",
+                "/DWIN32",
+                "/Zi",
+                "/Fdbuild\\BoilerController.pdb",
+                "/O2",
+                "/D_CRT_SECURE_NO_DEPRECATE=1",
+                "/D_CRT_NON_CONFORMING_SWPRINTFS=1",
+                "/D_SCL_SECURE_NO_WARNINGS=1",
+                "/D__NO_VC_CRTDBG__",
+                "/D__WXMSW__",
+                "/DNDEBUG",
+                "/D_UNICODE",
+                "/IC:\\wxWidgets-3.0.4\\lib\\vc_dll\\mswu",
+                "/IC:\\wxWidgets-3.0.4\\include",
+                "/W4",
+                "/I.",
+                "/DWXUSINGDLL",
+                "/D_WINDOWS",
+                "/IC:\\wxWidgets-3.0.4\\samples",
+                "/DNOPCH",
+                "/GR",
+                "/EHsc",
+                ".\\src\\BoilerController.cpp"
+            ],
+            "group": "build",
+            "dependsOn":[
+                "remove BoilerController object"
+            ],
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "resource gather",
+            "type": "shell",
+            "command": "scripts\\resource.bat",
+            "args": [
+                "/fobuild\\BoilerController.res",
+                "/d",
+                "WIN32",
+                "/d",
+                "_CRT_SECURE_NO_DEPRECATE=1",
+                "/d",
+                "_CRT_NON_CONFORMING_SWPRINTFS=1",
+                "/d",
+                "_SCL_SECURE_NO_WARNINGS=1",
+                "/d",
+                "__NO_VC_CRTDBG__",
+                "/d",
+                "__WXMSW__",
+                "/d",
+                "NDEBUG",
+                "/d",
+                "_UNICODE",
+                "/i",
+                "C:\\wxWidgets-3.0.4\\lib\\vc_dll\\mswu",
+                "/i",
+                "C:\\wxWidgets-3.0.4\\include",
+                "/i",
+                ".",
+                "/d",
+                "WXUSINGDLL",
+                "/d",
+                "_WINDOWS",
+                "/i",
+                "C:\\wxWidgets-3.0.4\\samples",
+                "/d",
+                "NOPCH",
+                "C:\\wxWidgets-3.0.4\\samples\\sample.rc"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "linker",
+            "type": "shell",
+            "command": "scripts\\linker.bat",
+            "args": [
+                "/NOLOGO",
+                "/OUT:build\\BoilerController.exe",
+                "/pdb:build\\BoilerController.pdb",
+                "/LIBPATH:C:\\wxWidgets-3.0.4\\lib\\vc_dll",
+                "/SUBSYSTEM:WINDOWS",
+                "build\\BoilerController.obj",
+                "build\\MainFrame.obj",
+                "build\\DebugWindow.obj",
+                "build\\BoilerController.res",
+                "wxexpat.lib",
+                "wxjpeg.lib",
+                "wxmsw30u.lib",
+                "wxmsw30u_gl.lib",
+                "wxpng.lib",
+                "wxregexu.lib",
+                "wxscintilla.lib",
+                "wxtiff.lib",
+                "wxzlib.lib",
+                "kernel32.lib",
+                "user32.lib",
+                "gdi32.lib",
+                "comdlg32.lib",
+                "winspool.lib",
+                "winmm.lib",
+                "shell32.lib",
+                "comctl32.lib",
+                "ole32.lib",
+                "oleaut32.lib",
+                "uuid.lib",
+                "rpcrt4.lib",
+                "advapi32.lib",
+                "wsock32.lib",
+                "wininet.lib"
+            ],
+            "group": "build",
+            "dependsOn":[
+                "remove executable",
+                "build MainFrame",
+                "build BoilerController",
+                "build DebugWindow"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "copy dll",
+            "type": "shell",
+            "command": "xcopy",
+            "args": [
+                "C:\\wxWidgets-3.0.4\\lib\\vc_dll\\*.dll",
+                ".\\build"
+            ],
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "build\\BoilerController.exe",
+            "args": [],
+            "group": "test",
+            "presentation": {
+                "reveal": "silent"
+            },
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
